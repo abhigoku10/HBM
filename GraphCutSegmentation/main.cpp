@@ -30,7 +30,7 @@
 #include "graph.h"
 
 using namespace std;
-
+// the size of the image given should be less
 const string IMAGE_PATH = "D:\\P1-2.tif";
 
 template class Graph<int,int,int>;
