@@ -26,6 +26,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+
 #include <math.h>
 #include "graph.h"
 
@@ -53,7 +54,7 @@ cv::Mat *pixels_to_graph;
 vector<vector<node_id> > pixel_node_mapping;
 
 
-const int MOUSE_RADIUS = 14;
+const int MOUSE_RADIUS = 6;
 const int HISTOGRAM_BINS = 8;
 const double BIN_WIDTH = floor(256. / (double)(HISTOGRAM_BINS));
 const int SIGMA = 5; // kind of arbitrary right now... This can be estimated as the average camera noise.
@@ -85,6 +86,7 @@ void initHistograms()
 		bg_hist.push_back(0.001); // this avoids zero probabilities
 		fg_hist.push_back(0.001);
 	}
+	
 }
 
 // Build histograms representing the posterior probabilities
@@ -305,6 +307,7 @@ void visualizeSegmentation()
 
 	cv::namedWindow("Segmentation");
 	cv::imshow("Segmentation", visualize);
+	cv::imwrite("D:\\SegmentedImage.tif", visualize);
 	//cv::waitKey();
 }
 

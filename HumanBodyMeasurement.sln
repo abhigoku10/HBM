@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HumanBodyMeasurement", "Hum
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphCutSegmentation", "GraphCutSegmentation\GraphCutSegmentation.vcxproj", "{4E51D607-8AC6-4F5F-9DA1-87B45CFE9F36}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HBM_M2", "HBM_M2\HBM_M2.vcxproj", "{F3A82D2E-6DCA-4E03-9F2F-0D07E74DF204}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{4E51D607-8AC6-4F5F-9DA1-87B45CFE9F36}.Debug|Win32.Build.0 = Debug|Win32
 		{4E51D607-8AC6-4F5F-9DA1-87B45CFE9F36}.Release|Win32.ActiveCfg = Release|Win32
 		{4E51D607-8AC6-4F5F-9DA1-87B45CFE9F36}.Release|Win32.Build.0 = Release|Win32
+		{F3A82D2E-6DCA-4E03-9F2F-0D07E74DF204}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F3A82D2E-6DCA-4E03-9F2F-0D07E74DF204}.Debug|Win32.Build.0 = Debug|Win32
+		{F3A82D2E-6DCA-4E03-9F2F-0D07E74DF204}.Release|Win32.ActiveCfg = Release|Win32
+		{F3A82D2E-6DCA-4E03-9F2F-0D07E74DF204}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
