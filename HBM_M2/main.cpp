@@ -86,7 +86,9 @@ int main(int argc, char** argv)
 
 	///Read the Human Image 
 	//Mat oMatInputImg = imread(argv[1]);
-	Mat oMatInputImg = imread("D:\\P1-1.tif");
+	Mat oMatInputImg = imread("D:\\P2.tif");
+	
+
 	if (oMatInputImg.empty())
 	{
 		cout << "Please Provide valid Image Path  " << endl;
