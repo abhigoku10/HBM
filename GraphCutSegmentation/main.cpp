@@ -35,7 +35,9 @@ using namespace std;
 
 
 
-const string IMAGE_PATH = "D:\\P1-2.tif";
+//const string IMAGE_PATH = "D:\\P1-2.tif";
+static string IMAGE_PATH = "Run";
+static string sSavePath;
 
 template class Graph<int,int,int>;
 template class Graph<short,int,int>;
@@ -310,7 +312,7 @@ void visualizeSegmentation()
 
 	cv::namedWindow("Segmentation");
 	cv::imshow("Segmentation", visualize);
-	cv::imwrite("D:\\SegmentedImage.tif", visualize);
+	cv::imwrite(sSavePath , visualize);
 	//cv::waitKey();
 }
 
@@ -457,8 +459,10 @@ void init()
 	//runSegmentation();
 }
 
-void main()
+int main(int argc, char** argv)
 {
+	 IMAGE_PATH = argv[1];
+
 	init();
 	// this mouse callback will handle gathering bg/fg pixels until a key is pressed.
 	cv::setMouseCallback("Display", onMouse, 0);
@@ -466,8 +470,20 @@ void main()
 	// once a key is pressed, we run the segmentation.
 	cv::waitKey();
 
+	string sInputpath = argv[1];
+	size_t found = sInputpath.find_last_of("/\\");
+	string FilePath = sInputpath.substr(0, found);
+	string FilePathlast = sInputpath.substr(sInputpath.find_last_of("/\\") + 1);
+	size_t last = FilePathlast.find_last_of(".");
+	string ImageName = FilePathlast.substr(0, last);
+	string SegmetedPath = ImageName + "_Segmented.jpg";
+
+	sSavePath = FilePath + SegmetedPath;
+
 	runSegmentation();
 	cv::waitKey();
 	delete mrf;
+
+	return 0;
 
 }

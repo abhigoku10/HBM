@@ -85,8 +85,8 @@ int main(int argc, char** argv)
 	}*/
 
 	///Read the Human Image 
-	//Mat oMatInputImg = imread(argv[1]);
-	Mat oMatInputImg = imread("D:\\P2.tif");
+	Mat oMatInputImg = imread(argv[1]);
+	//Mat oMatInputImg = imread("D:\\P2.tif");
 	
 
 	if (oMatInputImg.empty())
@@ -151,38 +151,38 @@ int main(int argc, char** argv)
 
 	int nFirstblockEnd = v_pLftFeaturePoints[0].y + fBlockLength;
 	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nFirstblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
-	imshow("firstblock", oMatOrginalImage);
-	cv::waitKey(0);
+	/*imshow("firstblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nSecondblockEnd = nFirstblockEnd + fBlockLength;
 	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nSecondblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
-	imshow("Sceondblock", oMatOrginalImage);
-	cv::waitKey(0);
+	/*imshow("Sceondblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nThirdblockEnd = nSecondblockEnd + fBlockLength;
 	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nThirdblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
-	imshow("Thirdblock", oMatOrginalImage);
-	cv::waitKey(0);
+	/*imshow("Thirdblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nFourthblockEnd = nThirdblockEnd + fBlockLength;
 	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nFourthblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
-	imshow("fourthblock", oMatOrginalImage);
-	cv::waitKey(0);
+	/*imshow("fourthblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nFiveblockEnd = nFourthblockEnd + fBlockLength;
 	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nFiveblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
-	imshow("fiveblock", oMatOrginalImage);
-	cv::waitKey(0);
+	/*imshow("fiveblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nSixblockEnd = nFiveblockEnd + fBlockLength;
-	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nSixblockEnd), 4, cv::Scalar(255, 0, 220), 1, 8);
-	imshow("sixblock", oMatOrginalImage);
-	cv::waitKey(0);
+	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nSixblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
+	/*imshow("sixblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nSevenblockEnd = nSixblockEnd + fBlockLength;
 	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nSevenblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
-	imshow("sevenblock", oMatOrginalImage);
-	cv::waitKey(0);
+	/*imshow("sevenblock", oMatOrginalImage);
+	cv::waitKey(0);*/
 
 	int nEightblockEnd = nSevenblockEnd + fBlockLength;
 
@@ -191,11 +191,20 @@ int main(int argc, char** argv)
 		nEightblockEnd = oMatOrginalImage.cols;
 	}
 
-	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nEightblockEnd), 4, cv::Scalar(255, 220, 0), 1, 8);
+	cv::circle(oMatOrginalImage, cv::Point(v_pLftFeaturePoints[0].x, nEightblockEnd), 4, cv::Scalar(255, 220,0), 1, 8);
 	imshow("Eightlock", oMatOrginalImage);
 	cv::waitKey(0);
 
-	cv::imwrite("D:\\MarkedImg.tif", oMatOrginalImage);
+	string sInputpath = argv[1];
+
+	size_t found = sInputpath.find_last_of("/\\");
+	string FilePath = sInputpath.substr(0, found);
+	string FilePathlast = sInputpath.substr(sInputpath.find_last_of("/\\") + 1);
+	size_t last = FilePathlast.find_last_of(".");
+	string ImageName = FilePathlast.substr(0, last);
+	string MarkedPath = ImageName + "_Marked.jpg";
+
+	cv::imwrite(FilePath + MarkedPath, oMatOrginalImage);
 
 	return 0;
 }

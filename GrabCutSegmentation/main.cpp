@@ -175,16 +175,22 @@ int main(int argc, char** argv)
 	cv::imshow("Image", image);
 
 	string sInputpath = argv[2];
+	
 	size_t found = sInputpath.find_last_of("/\\");
 	string FilePath = sInputpath.substr(0, found);
+	string FilePathlast = sInputpath.substr(sInputpath.find_last_of("/\\")+1);
+	size_t last = FilePathlast.find_last_of(".");
+	string ImageName = FilePathlast.substr(0, last);
+	string MarkedPath = ImageName + "_Marked.jpg";
 
-	cv::imwrite(FilePath + "\\ManualMarkedGC.jpg", image);
+	cv::imwrite(FilePath + MarkedPath, image);
 
 	// display result
 	cv::namedWindow("Segmented Image", CV_NORMAL);
 	cv::imshow("Segmented Image", foreground);
 
-	cv::imwrite(FilePath + "\\Segmented.jpg", foreground);
+	string SegmentedPath = ImageName + "_Segmented.jpg";
+	cv::imwrite(FilePath + SegmentedPath, foreground);
 
 	waitKey();
 	return 0;
